@@ -1,0 +1,5 @@
+.fab{
+    position: 'absolute';
+    bottom: spacing(2);
+    right: spacing(2);
+  }
