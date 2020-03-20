@@ -18,11 +18,7 @@ class Company extends Component{
                     <AppContext.Consumer>                         
                     {context => 
                                             
-                        {
-                            return(
-                             <CompanyMainPanel/>
-                            )
-                            /** 
+                        {           
                            if(context.employeesAddress === undefined && context.companyName=== ""){
                                 return(
                                     <div>
@@ -38,7 +34,6 @@ class Company extends Component{
                                     </div>
                                )
                            }                        
-                           */
                         }                        
                     }                 
                     </AppContext.Consumer>                 
