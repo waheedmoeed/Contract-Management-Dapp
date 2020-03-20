@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modal from 'react-bootstrap/Modal'
 
-class ImageModal extends React.Component{
+class ModalComponent extends React.Component{
 
 
     render(){
@@ -19,4 +19,4 @@ class ImageModal extends React.Component{
     }
 }
 
-export default ImageModal;
+export default ModalComponent;

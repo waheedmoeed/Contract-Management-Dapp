@@ -15,9 +15,10 @@ class Company extends Component{
         return(            
             <div>  
                 <AppProvider>  
-                    <AppContext.Consumer>  
+                    <AppContext.Consumer>                         
                     {context => 
-                        {
+                                            
+                        {           
                            if(context.employeesAddress === undefined && context.companyName=== ""){
                                 return(
                                     <div>
@@ -33,8 +34,8 @@ class Company extends Component{
                                     </div>
                                )
                            }                        
-                        }
-                    } 
+                        }                        
+                    }                 
                     </AppContext.Consumer>                 
                 </AppProvider>
           </div>

@@ -1,51 +1,5 @@
-
- .profileImage{
-     width: 200px;
-     height: 200px;
-     position: relative;
-     cursor: pointer;
- }
-
- .profileImage:hover .profileToolTip{
-     width: 200px;
-
- }
- .profileToolTip{
-    width: 0px;
-    height: 200px;
-    background: #a9dad475;
-    position: absolute; 
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: 0.7s ease
- }
-
- .image{
-    display: block;
-    width: 200px;
-    height: 200px;
- }
-
- .profileToolTip h3{
-    font-weight: 700;
-    font-family: "Roboto Slab", "Times New Roman", serif;
-    color: #1b6296
- }
-
-.uploadImage{
-    align-self: center;
-    font-family: "Roboto Slab", "Times New Roman", serif;
-}
-
 .form{
     margin: 0;
-}
-
-.submitProfileData{
-    align-self: center;
 }
 
 .cardHeader{
@@ -70,6 +24,10 @@
     font-family: "Roboto Slab", "Times New Roman", serif;
     margin-top: .625rem;
     font-size: 1.125rem;
+}
+
+.submitProfileData{
+    float: right;
 }
 
 

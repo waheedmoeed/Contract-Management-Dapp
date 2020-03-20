@@ -31,9 +31,9 @@ class CompanyMainPanel extends Component{
                           tabContent: (
                             <EmployeeContracts/>
                           )
-                        },
+                        },                        
                         {
-                          tabButton: "Update Profile",
+                          tabButton: "New Employee Contract",
                           tabIcon: updateIcon,
                           tabContent: (
                             <UpdateProfile/>

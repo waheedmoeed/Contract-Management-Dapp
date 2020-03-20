@@ -12,10 +12,13 @@ import AvatarIcon from '../../Components/assests/images/avatar.jpg'
 //Contracts Abi
 import {contractAbi} from '../../contracts-abi/abi.js'
 
+import ModalComponent from './ModalComponent'
+
  class EmployeeContract extends Component{
      constructor(props){
          super(props)
          this.state = {
+             showModal : false,
              employeeName :"",
              ipfsDocumentHash : "",
              payInEther :0,
@@ -26,10 +29,19 @@ import {contractAbi} from '../../contracts-abi/abi.js'
          this.companyContract = props.companyContract
          this.companyPublicAddress = props.companyPublicAddress
          this.web3 = window.web3
+
+         this.showControlModal = this.showControlModal.bind(this)
      }
 
      //Getting employee data
-     componentDidMount() {
+    componentDidMount() {
+         if(this.state.employeeName==="" && this.state.ipfsDocumentHash===""){
+             this.getEmployeeData()
+         }
+     }     
+     //Getting employee data
+     getEmployeeData(){   
+         console.log("Called")     
          //Getting employees contract address from the company contract by providing employees public key
         let contract = new this.web3.eth.Contract(contractAbi.companyContract,this.companyContract)
         contract.methods.getEmployeeContract(this.employeePublicAddress).call({from:this.companyPublicAddress},(error, result)=>{
@@ -54,41 +66,44 @@ import {contractAbi} from '../../contracts-abi/abi.js'
             } else{
                 console.log(error)                
             }           
-        })
+        })     
      }
 
      //Modal to perform operation related to employee contract by showing modal
      showControlModal(){
-
+         this.setState({
+             showModal: !this.state.showModal
+         })
      }
 
 
      render(){
-        return (               
-                    <ListItem alignItems="flex-start" button divider key={this.props.key} onClick={this.showControlModal}>
-                        <ListItemAvatar>
-                        <Avatar alt="Image Not Found" src={AvatarIcon} style={{width:"80px", height:"80px"}}/>
-                        </ListItemAvatar>
-                        <ListItemText
-                        style={{margin:"20px"}}
-                        primary={"Employee Name: "+this.state.employeeName}
-                        secondary={
-                            <React.Fragment>                    
-                            <br/>
-                            <Typography
-                                component="span"
-                                variant="body2"
-                                style={{display:"inline"}}
-                                color="textPrimary"
-                            >
-                                {"Employee Publlic Address: "+this.props.publicAddress+" Employee Contract Address: "+this.state.contractAddress}
-                                
-                            </Typography>
-                            </React.Fragment>
-                        }
-                        />
-                        <Divider variant="inset"  component="li"/>
-                    </ListItem>  
+        return (    
+            <ListItem alignItems="flex-start" button divider onClick={this.showControlModal}>
+                <ListItemAvatar>
+                <Avatar alt="Image Not Found" src={AvatarIcon} style={{width:"80px", height:"80px"}}/>
+                </ListItemAvatar>
+                <ListItemText
+                style={{margin:"20px"}}
+                primary={"Employee Name: "+this.state.employeeName}
+                secondary={
+                    <React.Fragment>                    
+                    <br/>
+                    <Typography
+                        component="span"
+                        variant="body2"
+                        style={{display:"inline"}}
+                        color="textPrimary"
+                    >
+                        {"Employee Publlic Address: "+this.props.publicAddress+" Employee Contract Address: "+this.state.contractAddress}
+                        
+                    </Typography>
+                    </React.Fragment>
+                }
+                />
+                <Divider variant="inset"  component="li"/>
+                <ModalComponent cardShow={this.state.showModal}/>
+            </ListItem>            
         )
      } 
  }
