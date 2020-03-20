@@ -13,10 +13,9 @@ class EmployeesList extends React.Component {
     }
 
   render(){
-        let index = 0, listItems=[];
+      let listItems =[]
         this.employeesAddressList.forEach(element => {
-            listItems.push(<EmployeeContract publicAddress={element} companyPublicAddress={this.companyPubaddress} companyContract={this.companyContract} key={index}/>)
-            index = index +1;
+            listItems.push(<EmployeeContract publicAddress={element} companyPublicAddress={this.companyPubaddress} companyContract={this.companyContract}/>)
         })   
         return (
             <List alignItems="flex-start">

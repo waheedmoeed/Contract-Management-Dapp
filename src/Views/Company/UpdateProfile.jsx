@@ -2,9 +2,10 @@ import React from 'react'
 import Container  from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Column from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
 import Icon from "@material-ui/core/Icon";
 import People from '@material-ui/icons/People'
+import Date from '@material-ui/icons/DateRange'
+import Key from '@material-ui/icons/VpnKey'
 import Email from "@material-ui/icons/Email";
 
 import Card from "../../Components/Card/Card.jsx";
@@ -38,47 +39,36 @@ class UpdateProfile extends React.Component{
         );
       }
 
-    fileChange(event){
-        if(event.target.files[0] != null){
-            this.setState({
-                imageUrl : URL.createObjectURL(event.target.files[0])
-            })
+    handleChange(event){
+        if(event.target.id === "publicAddress"){
+          this.publicAddress = event.target.value
+        }else{
+          this.contractAddress = event.target.value
         }
-    }
-
-    handleClick(e) {
-        this.refs.fileUploader.click();
     }
 
     render(){
         return(
             <Container>
-                <Card className={this.state.cardAnimaton}>    
-                    <CardHeader  color="info"  className="cardHeader">
-                        <h4 className ="tlt">Update Profile</h4>
-                    </CardHeader>
-                    <CardBody>
-                        <Row>
-                            <Column lg="4" sm="12">
-                                <div className="profileImage">
-                                    <input type="file" ref="fileUploader" onChange={(event)=>{this.fileChange(event)}} style={{display: "none"}}/>
-                                    <Image src={this.state.imageUrl} roundedCircle thumbnail="true"  className="w3-hover-opacity image" />
-                                    <div className="profileToolTip w3-circle" onClick={this.handleClick}>
-                                        <h3 >Select Image</h3>
-                                    </div>
-                                </div>
-                                <Button size="lg" color="info" style={{margin:"20px"}}>Upload Image</Button>
-                            </Column>
-                            <Column lg="6" sm="12">
+                <Row>
+                    <Column lg="2"></Column>
+                    <Column lg="8">
+                        <Card className={this.state.cardAnimaton}>    
+                            <CardHeader  color="info"  className="cardHeader">
+                                <h4 className ="tlt">Create New Contract</h4>
+                            </CardHeader>
+                            <CardBody>
                                 <form className="form">
                                     <CustomInput
-                                        labelText="Company name"
-                                        id="companyName"
+                                        labelText="Employee Name"
+                                        id="employeeName"
                                         formControlProps={{
                                         fullWidth: true
                                         }}
                                         inputProps={{
-                                        type: "alphnumeric",
+                                        onChange:this.handleChange,
+                                        type: "text",                                        
+                                        required:true,
                                         startAdornment: (
                                             <InputAdornment position="end">
                                             <People/>
@@ -87,28 +77,32 @@ class UpdateProfile extends React.Component{
                                         }}
                                     />
                                     <CustomInput
-                                        labelText="Email"
-                                        id="email"
+                                        labelText="Cnic Number"
+                                        id="cnic"
                                         formControlProps={{
                                         fullWidth: true
                                         }}
                                         inputProps={{
-                                        type: "email",
+                                        type: "text",
+                                        onChange:this.handleChange,                                                                      
+                                        required:true,
                                         startAdornment: (
                                             <InputAdornment position="end">
-                                            <Email className="inputIconsColor" />
+                                            <People className="inputIconsColor" />
                                             </InputAdornment>
                                         )
                                         }}
                                     />
                                     <CustomInput
-                                        labelText="Password"
-                                        id="pass"
+                                        labelText="Company Secret"
+                                        id="companySecret"
                                         formControlProps={{
                                         fullWidth: true
                                         }}
                                         inputProps={{
-                                        type: "password",
+                                        type: "alphanumeric",
+                                        onChange:this.handleChange,                                                                      
+                                        required:true,
                                         startAdornment: (
                                             <InputAdornment position="end">
                                             <Icon className="inputIconsColor">
@@ -118,15 +112,85 @@ class UpdateProfile extends React.Component{
                                         ),
                                         autoComplete: "off"
                                         }}
-                                    />  
+                                    />
+                                    <CustomInput
+                                        labelText="Employee Address"
+                                        id="employeeAddress"
+                                        formControlProps={{
+                                        fullWidth: true
+                                        }}
+                                        inputProps={{
+                                        type: "alphanumeric",
+                                        onChange:this.handleChange,                                                                      
+                                        required:true,
+                                        startAdornment: (
+                                            <InputAdornment position="end">
+                                            <Key></Key>
+                                            </InputAdornment>
+                                        ),
+                                        autoComplete: "off"
+                                        }}
+                                    /> 
+                                    <CustomInput
+                                        labelText="Control Authority Address"
+                                        id="controlAuthority"
+                                        formControlProps={{
+                                        fullWidth: true
+                                        }}
+                                        inputProps={{
+                                        type: "alphanumeric",
+                                        onChange:this.handleChange,                                                                      
+                                        required:true,
+                                        startAdornment: (
+                                            <InputAdornment position="end">
+                                            <Key></Key>
+                                            </InputAdornment>
+                                        )
+                                        }}
+                                    />
+                                    <CustomInput
+                                        labelText="Pay In Ether"
+                                        id="pay"
+                                        formControlProps={{
+                                        fullWidth: true
+                                        }}
+                                        inputProps={{
+                                        type: "number",
+                                        onChange:this.handleChange,                                                                      
+                                        required:true,
+                                        startAdornment: (
+                                            <InputAdornment position="end">
+                                            <Email className="inputIconsColor" />
+                                            </InputAdornment>
+                                        )
+                                        }}
+                                    />                                    
+                                    <CustomInput
+                                        labelText="Expiry Date"
+                                        id="expiryDate"
+                                        formControlProps={{
+                                        fullWidth: true
+                                        }}
+                                        inputProps={{
+                                        type: "date",
+                                        onChange:this.handleChange,                                                                      
+                                        required:true,
+                                        startAdornment: (
+                                            <InputAdornment position="end">
+                                            <Date/>                                         
+                                            </InputAdornment>
+                                        ),
+                                        autoComplete: "off"
+                                        }}
+                                    />
                                     <Button color="info" size="lg" className="submitProfileData" type="submit">
-                                       Get it done
+                                    Get it done
                                     </Button>
                                 </form>
-                            </Column>
-                        </Row>
-                    </CardBody>
-                </Card>      
+                            </CardBody>
+                        </Card>
+                    </Column>    
+                </Row>     
             </Container>
         )
     }

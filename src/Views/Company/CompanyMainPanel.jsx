@@ -25,15 +25,15 @@ class CompanyMainPanel extends Component{
                         contentGrid: { xs: 12, sm: 8, md: 8 ,lg:10}
                       }}
                       tabs={[
-                        {
+                        /** {
                           tabButton: "Employee Contracts",
                           tabIcon: contractIcon,
                           tabContent: (
                             <EmployeeContracts/>
                           )
-                        },
+                        }, */                        
                         {
-                          tabButton: "Update Profile",
+                          tabButton: "New Employee Contract",
                           tabIcon: updateIcon,
                           tabContent: (
                             <UpdateProfile/>

@@ -95,6 +95,10 @@ contract EmployeeContract{
     function getCompanyAddress()public view returns(address){
         return companyAddress;
     }
+
+     function getEmployeeAddress() public view returns(address){
+        return employeeAddress;
+    }
     
     /**
      * Contract Destruction
