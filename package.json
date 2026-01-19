@@ -15,7 +15,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.4.0",
     "react-swipeable-views": "0.13.3",
-    "web3": "1.2.6",
+    "web3": "4.16.0",
     "websocket": "1.0.31"
   },
   "scripts": {
